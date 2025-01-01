@@ -50,7 +50,8 @@ main_menu(){
       echo "1. Adauga o parola"
       echo "2. Vizualizeaza parolele"
       echo "3. Sterge o parola"
-      echo "4. Iesire"
+      echo "4. Resetarea parolei"
+      echo "5. Iesire"
       echo -n "Alege o optiune: "
       read choice
 
@@ -61,7 +62,9 @@ main_menu(){
          ;;
       3) delete_password
          ;;
-      4)
+      4) reset_password
+         ;;
+      5)
         openssl enc -aes-256-cbc -e -in "$fisier_temp_parole" -out "$fisier_parole" -k "$parola_admin"
         rm -f "$fisier_temp_parole"
         echo "La revedere!"
@@ -130,6 +133,27 @@ delete_password(){
   else
      echo "Serviciul nu a fost gasit!"
   fi
+
+}
+
+reset_password(){
+    echo "Atentie! Aceasta actiune va sterge toate parolele salvate!"
+    echo -n "Esti sigur ca doresti sa continui? (Y/N): "
+    read raspuns
+
+    if [[ "$raspuns" == "Y" || "$raspuns" == "y" || "$raspuns" == "da" || "$raspuns" == "DA" || "$raspuns" == "yes" || "$raspuns" == "Yes" ]]; then
+       echo -n "Esti sigur sigur? (Y/N): "
+       read raspunsfinal
+          if [[ "$raspunsfinal" == "Y" || "$raspunsfinal" == "y" || "$raspunsfinal" == "da" || "$raspunsfinal" == "DA" || "$raspunsfinal" == "yes" || "$raspunsfinal" == "Yes" ]]; then
+             rm -f "$fisier_parole" "$fisier_temp_parole"
+             echo "Fisierul de parole a fost sters."
+             exit 0
+          else
+             echo "Resetarea parolei principale a fost anulata."
+          fi
+     else
+       echo "Resetarea parolei principale a fost anulata."
+     fi
 
 }
 
