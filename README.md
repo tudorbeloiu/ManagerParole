@@ -1,6 +1,6 @@
 # 🔒 Manager Simplu de Parole - Script Bash
 
-Un script Bash minimalist pentru gestionarea securizată a parolelor utilizând **criptare AES-256-CBC** prin OpenSSL. Proiectul este perfect pentru începători care vor să învețe Bash scripting și să exploreze lucrul cu fișiere, criptarea datelor și interacțiunea în linia de comandă.
+Un script Bash minimalist pentru gestionarea securizată a parolelor utilizând **criptare AES-256-CBC** prin OpenSSL.
 
 ---
 
